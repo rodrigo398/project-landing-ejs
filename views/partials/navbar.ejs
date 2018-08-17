@@ -1,0 +1,142 @@
+<nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+	<!-- SideNav slide-out button -->
+	<a href="#" data-activates="slide-out" class="btn btn-primary p-3 button-collapse">
+		<i class="fa fa-bars"></i>
+	</a>
+	<!-- /.navbar-header -->
+	<ul class="nav navbar-top-links navbar-right">
+		<li class="dropdown">
+			<a class="dropdown-toggle" data-toggle="dropdown" href="#">
+				<i class="fa fa-user fa-fw"></i>
+				<i class="user-name"></i>
+			</a>
+			<ul class="dropdown-menu dropdown-user">
+				<li id="menu-login">
+
+				</li>
+			</ul>
+			<!-- /.dropdown-user -->
+		</li>
+		<!-- /.dropdown -->
+	</ul>
+	<!-- /.navbar-top-links -->
+</nav>
+<!-- Sidebar navigation -->
+<div id="slide-out" class="side-nav fixed" style="transform: translateX(0px);">
+	<ul class="custom-scrollbar">
+		<!-- Logo -->
+		<li>
+			<div class="logo-wrapper waves-light waves-effect waves-light">
+				<a href="/">
+					<img src="../dist/img/landing.svg" width="230px" height="90px" alt="landing">
+				</a>
+			</div>
+		</li>
+		<!--/. Logo -->
+		<li>
+			<form class="search-form" action="/buscar" method="get" role="search">
+				<div class="form-group md-form mt-0 pt-1 waves-light waves-effect waves-light">
+					<input id="materialFormLoginEmailEx" class="form-control mr-sm-2" type="text" name="busqueda" placeholder="Buscar..." aria-label="Search">
+				</div>
+			</form>
+		</li>
+		<!--/.Search Form-->
+		<!-- Side navigation links -->
+		<li>
+			<ul class="collapsible collapsible-accordion">
+				<li class="">
+					<a class="collapsible-header waves-effect arrow-r">
+						<i class="fa fa-sitemap"></i>Rubros
+						<i class="fa fa-angle-down rotate-icon"></i>
+					</a>
+					<div class="collapsible-body" style="display: none;">
+						<ul class="list-unstyled">
+							<li>
+								<a href="/buscar?busqueda=agro">AGRO</a>
+							</li>
+							<li>
+								<a href="/buscar?busqueda=consumo masivo">CONSUMO MASIVO</a>
+							</li>
+							<li>
+								<a href="/buscar?busqueda=energia">ENERGIA</a>
+							</li>
+
+
+						</ul>
+					</div>
+				</li>
+				<li class="">
+					<a class="collapsible-header waves-effect arrow-r">
+						<i class="fa fa-truck"></i> Proveedores
+						<i class="fa fa-angle-down rotate-icon"></i>
+					</a>
+					<div class="collapsible-body" style="display: none;">
+						<ul class="list-unstyled large-subMenu">
+							<li>
+								<a href='/buscar?busqueda=Agro'> Agro </a>
+							</li>
+							<li>
+								<a href='/buscar?busqueda=Auditoría'> Auditoría </a>
+							</li>
+							<li>
+								<a href='/buscar?busqueda=Comercialización'> Comercialización </a>
+							</li>
+							<li>
+								<a href='/buscar?busqueda=Consultoría'> Consultoría </a>
+							</li>
+						</ul>
+					</div>
+				</li>
+				<li class="">
+					<a class="collapsible-header waves-effect arrow-r">
+						<i class="fa fa-group"></i> SENIORITY
+						<i class="fa fa-angle-down rotate-icon"></i>
+					</a>
+					<div class="collapsible-body" style="display: none;">
+						<ul class="list-unstyled">
+							<li>
+								<a href="/buscar?busqueda=CIO">- CIO</a>
+							</li>
+							<li>
+								<a href="/buscar?busqueda=Director">- Director</a>
+							</li>
+
+						</ul>
+					</div>
+				</li>
+				<li class="">
+					<a class="collapsible-header waves-effect arrow-r">
+						<i class="fa fa-graduation-cap"></i> EDUCACIÓN
+						<i class="fa fa-angle-down rotate-icon"></i>
+					</a>
+					<div class="collapsible-body" style="display: none;">
+						<ul class="list-unstyled">
+							<li>
+								<a href="/buscar?busqueda=Licenciatura">- Licenciatura</a>
+							</li>
+							<li>
+								<a href="/buscar?busqueda=Analista">- Analista</a>
+							</li>
+
+						</ul>
+					</div>
+				</li>
+				<li class="">
+					<a class="collapsible-header waves-effect arrow-r">
+						<i class="fa fa-industry"></i> CAMARA & SECTOR PÚBLICO
+						<i class="fa fa-angle-down rotate-icon"></i>
+					</a>
+					<div class="collapsible-body" style="display: none;">
+						<ul class="list-unstyled">
+							<li>
+								<a href="#">- Organismos del estado</a>
+							</li>
+						</ul>
+					</div>
+				</li>
+			</ul>
+		</li>
+		<!--/. Side navigation links -->
+	</ul>
+	<div class="sidenav-bg mask-strong"></div>
+</div>

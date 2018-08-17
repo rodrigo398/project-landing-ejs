@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="">
+	<meta name="author" content="">
+
+	<meta property="og:title" content="Landing 2018 - <%= data[0].nombreEmpresa %>" />
+	<meta property="og:url" content="<%= urlfull %>" />
+	<meta property="og:site_name" content="Landing 2018" />
+	<meta property="og:locale" content="es_LA" />
+	<meta property="og:image" content="https://placeimg.com/150/150/any" />
+
+	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:title" content="">
+	<meta name="twitter:site" content="@landing">
+	<meta name="twitter:creator" content="Landing">
+	<meta name="twitter:domain" content="http://landing.com">
+	<meta name="twitter:url" content="https://twitter.com/landing">
+	<meta name="twitter:description" content="">
+	<meta name="twitter:image" content="" />
+
+	<title>
+		<%=data[0].nombreEmpresa%> - Landing | Landing.com</title>
+	<!-- Bootstrap Core CSS -->
+	<link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+	<!-- Material CSS -->
+	<link href="../dist/css/mdb.min.css" rel="stylesheet">
+	<!-- Custom CSS -->
+	<link href="../dist/css/sb-admin-2.css" rel="stylesheet">
+	<link href="../dist/css/star-rating.css" rel="stylesheet">
+	<!-- Custom Fonts -->
+	<link href="../vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+	<link href="https://fonts.googleapis.com/css?family=Titillium+Web:400,700italic,600italic,400italic,300italic,200italic,900,700,600,300,200"
+	 rel="stylesheet" type="text/css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+	<!--[if lt IE 9]>
+		<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+		<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+		<![endif]-->
+	<style>
+		.gl-star-rating {
+			margin-bottom: 1em;
+		}
+
+		pre {
+			hyphens: none;
+			tab-size: 4;
+			white-space: pre;
+			word-break: normal;
+			word-spacing: normal;
+			word-wrap: normal;
+		}
+
+		header ul a {
+			line-height: 1.2;
+			padding-top: 5px;
+		}
+	</style>
+
+	<!-- Google Tag Manager -->
+	<script>(function (w, d, s, l, i) {
+			w[l] = w[l] || []; w[l].push({
+				'gtm.start':
+					new Date().getTime(), event: 'gtm.js'
+			}); var f = d.getElementsByTagName(s)[0],
+				j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+					'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+		})(window, document, 'script', 'dataLayer', 'GTM-xxxxx');</script>
+	<!-- End Google Tag Manager -->
+
+
+
+</head>
+
+<body class="perfil-empresas fixed-sn black-skin">
+	<header>
+		<% include ../partials/navbar %>
+			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+				<div class="content-banner banner970x90">
+
+				</div>
+			</div>
+	</header>
+	<main>
+		<div id="wrapper">
+			<div id="page-wrapper" class="container-fluid" itemscope itemtype="http://schema.org/Organization">
+				<div class="row">
+					<div class="col-lg-8 col-md-12 col-sm-12 col-xs-12">
+						<div class="col-12">
+							<div class="panel panel-primary">
+								<div class="panel-heading" itemprop="member" itemscope itemtype="http://schema.org/OrganizationRole">
+									<div class="data-ficha clearfix">
+										<div class="pull-left img-perfil">
+											<%
+												var pImagen;
+												try{
+													fs.statSync('./public/logos/' + data[0].nombreEmpresa +  " - Logo.jpg");
+													pImagen = true;
+												}
+
+												catch(err){
+													console.log("sin imagenEmpresa: ", data[0].nombreEmpresa);
+		                                            pImagen = false;
+												} %>
+
+												<% if (pImagen) { %>
+													<img src="/logos/<%= data[0].nombreEmpresa %> - logo.jpg" alt="<%= data[0].nombreEmpresa %>" itemprop="image" style="width: 200px;"
+													/>
+													<%} else { %>
+														<img src="/logos/dummyempresa.jpg" alt="<%= data[0].nombreEmpresa %>" style="width: 150px;height:150px" itemprop="image"
+														/>
+														<%}%>
+
+										</div>
+										<div class="pull-left title-perfil">
+											<h2 class="landing" itemprop="member" itemscope itemtype="http://schema.org/Person">
+												<span itemprop="name">
+													<%= data[0].nombreEmpresa %>
+												</span>
+											</h2>
+											<select id="star-rating" class="col-xs-6">
+												<option value="">Puntaje</option>
+												<option value="5">Excelente</option>
+												<option value="4">Muy bueno</option>
+												<option value="3">Promedio</option>
+												<option value="2">Pobre</option>
+												<option value="1">Terrible</option>
+											</select>
+										</div>
+										<div class="pull-right share-quien">
+											<!-- Add font awesome icons -->
+											<a class="btn-floating btn-email" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false"
+											 aria-controls="collapseExample">
+												<i class="fa fa-share-alt"></i>
+											</a>
+
+											<div class="collapse" id="collapseExample">
+												<a href="#" class="btn-floating btn-fb waves-effect waves-light" onclick="javascript:window.open('https://www.facebook.com/sharer/sharer.php?u=<%= urlfull %>','Comparte en Facebook','location=no,toolbar=no,width=350,height=250');return false">
+													<i class="fa fa-facebook"></i>
+												</a>
+												<a href="#" class="btn-floating btn-tw waves-effect waves-light" onclick="javascript:window.open('https://twitter.com/share?text=Landing - <%= data[0].nombreEmpresa %>&url=<%= urlfull %>','Comparte en Twitter','location=no,toolbar=no,width=350,height=350');return false">
+													<i class="fa fa-twitter"></i>
+												</a>
+												<a href="whatsapp://send?text=<%= data[0].nombreEmpresa %> <%= urlfull %>" class="whatsapp-share btn-floating btn-tw waves-effect waves-light">
+													<i class="fa fa-whatsapp"></i>
+												</a>
+												<a href="#" class="btn-floating btn-gplus" onclick="javascript:window.open('https://plus.google.com/share?url=<%= urlfull %>','Comparte en Google +','location=no,toolbar=no,width=350,height=250');return false">
+													<i class="fa fa-google-plus"></i>
+												</a>
+												<a href="#" class="btn-floating btn-li" onclick="javascript:window.open('https://www.linkedin.com/shareArticle?mini=true&url=<%= urlfull %>','Comparte en Linkedin','location=no,toolbar=no,width=450,height=450');return false;">
+													<i class="fa fa-linkedin"></i>
+												</a>
+											</div>
+										</div>
+									</div>
+									<div>
+										<%if (!islogin) { %>
+											<%- include('../partials/blockcontent', {empresa: data[0].nombreEmpresa})  %>
+												<%} else { %>
+													<ul class="list-group">
+														<% for (var i=0; i<data.length; i++) { %>
+															<% if (data[i]["personaJuridica"]) { %>
+																<% if (data[i]["personaJuridica"].Rubro) { %>
+																	<li class="list-group-item">
+																		<span>
+																			<strong>Rubro:</strong>
+																		</span>
+																		<span>
+																			<%= data[i]["personaJuridica"].Rubro %>
+																		</span>
+																	</li>
+																	<%}%>
+
+																		<% if (data[i]["personaJuridica"].Dirección) { %>
+																			<li class="list-group-item">
+																				<span>
+																					<strong>
+																						<i class="fa fa-envelope"></i>
+																					</strong>
+																				</span>
+																				<span>
+																					<%= data[i]["personaJuridica"].Dirección %>
+																				</span>
+																				<div style="padding-top:2.5%">
+																					<iframe width="100%" height="75%" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?key= AIzaSyAmI441LEA8OveBv5upJ29jzkq_JfCaciA &q=><%= data[i]["
+																					 personaJuridica "].Dirección %>" allowfullscreen></iframe>
+																				</div>
+																			</li>
+																			<%}%>
+
+																				<% for (key in data[i]["personaJuridica"]) {
+																if (key.toLowerCase().indexOf("tel") > -1){ %>
+																					<li class="list-group-item">
+																						<span>
+																							<strong>
+																								<i class="fa fa-phone-square"></i>
+																							</strong>
+																						</span>
+																						<span>
+																							<%= data[i]["personaJuridica"][key] %>
+																						</span>
+																					</li>
+																					<%}%>
+
+																						<% if (key.toLowerCase().indexOf("web") > -1){ %>
+																							<% if(data[i]["personaJuridica"][key].indexOf(',') > -1 ) {
+																	%>
+																								<%
+																		var urlsMultiples = data[i]["personaJuridica"][key].split(',');
+																		var conjuntoStrings = "";
+																		for (let index = 0; index < urlsMultiples.length; index++) {
+																			const element = urlsMultiples[index].trim();
+																			var coma = (index != urlsMultiples.length -1) ? "," : ""
+																			var stringDeElemento = "<a href='http://" + element + "'> "+ element + " </a>" + coma;
+																			conjuntoStrings = conjuntoStrings + stringDeElemento;
+																		}
+																		%>
+																									<li class="list-group-item" itemprop="url">
+																										<span>
+																											<strong>
+																												<i class="glyphicon glyphicon-globe"></i>
+																											</strong>
+																										</span>
+																										<span>
+																											<%-conjuntoStrings%>
+																										</span>
+																									</li>
+																									<%} else {%>
+																										<li class="list-group-item" itemprop="url">
+																											<span>
+																												<strong>
+																													<i class="glyphicon glyphicon-globe"></i>
+																												</strong>
+																											</span>
+																											<span>
+																												<a href='http://<%= data[i]["personaJuridica"][key] %>' target="_blank">
+																													<%= data[i]["personaJuridica"][key] %>
+																												</a>
+																											</span>
+																										</li>
+																										<%} %>
+																											<%}%>
+
+																												<% if (key.toLowerCase().indexOf("empleado") > -1){ %>
+																													<li class="list-group-item">
+																														<span>
+																															<strong>Empleados:</strong>
+																														</span>
+																														<span>
+																															<%= data[i]["personaJuridica"][key] %>
+																														</span>
+																													</li>
+																													<%}%>
+																														<%}%>
+
+																															<% if (data[i]["personaJuridica"]["Propietarios o principales accionistas"]) { %>
+																																<li class="list-group-item">
+																																	<span>
+																																		<strong>Propietarios y principales accionistas:</strong>
+																																	</span>
+																																	<span>
+																																		<%= data[i]["personaJuridica"]["Propietarios o principales accionistas"] %>
+																																	</span>
+																																</li>
+																																<%}%>
+																																	<% if (data[i]["personaJuridica"]["Gerente general o director"]) { %>
+																																		<li class="list-group-item">
+																																			<span>
+																																				<strong>Gerente General:</strong>
+																																			</span>
+																																			<span>
+																																				<%= data[i]["personaJuridica"]["Gerente general o director"] %>
+																																			</span>
+																																		</li>
+																																		<%}%>
+																																			<%}%>
+
+																																				<% if (data[i]["personaFisica"] && data[i]["personaFisica"].cargo && data[i]["personaFisica"].nombre ) { %>
+																																					<li class="list-group-item">
+																																						<span>
+																																							<strong>
+																																								<%= data[i]["personaFisica"].cargo.charAt(0).toUpperCase() + data[i]["personaFisica"].cargo.slice(1) %>:</strong>
+																																						</span>
+																																						<span>
+																																							<%= data[i]["personaFisica"].nombre %>
+																																						</span>
+																																					</li>
+																																					<%}%>
+
+																																						<%}%>
+													</ul>
+
+
+													<%}%>
+														<div class="row">
+															<!--CONTENEDOR DEL BANNER-->
+															<div class="content-banner banner300x250">
+
+															</div>
+														</div>
+														<div class="row">
+
+														</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="mod-it-cxense col-12">
+							<div class="cxense-decoration">
+								<h2 class="title-mod-cxense-it"> Noticias de tu interes</h2>
+
+							</div>
+						</div>
+
+					</div>
+					<div id="colum-nota" class="col-lg-4 col-md-12 col-sm-12 col-12">
+						<!--CONTENEDOR DEL BANNER-->
+						<div class="content-banner banner300x250">
+
+						</div>
+					</div>
+				</div>
+				<!-- /.row -->
+			</div>
+			<!-- /#page-wrapper -->
+		</div>
+	</main>
+	<!-- /#wrapper -->
+	<footer class="clearfix site-footer">
+		<div class="a-divider-inner"></div>
+		<div class="logos-quien text-center">
+			<img src="../dist/img/landing.svg" width="160" height="60">
+			<img src="../dist/img/landing.svg" width="160" height="60">
+			<img src="../dist/img/landing.svg" width="130" height="60">
+		</div>
+		<div class="col-lg-12 text-center legales">
+			Todos los datos están actualizados al 01/01/2018. La información puede haber sido modifica en el transcurso de la ultima
+			actualización a la fecha. Lamentamos cualquier inconveniente.
+		</div>
+	</footer>
+	<% include ../partials/commonscript %>
+		<script>
+			var starrating = new StarRating(document.getElementById('star-rating'));
+		</script>
+</body>
+
+</html>

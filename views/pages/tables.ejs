@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <% if (parametroBusqueda){ %>
+        <title>
+            <%= parametroBusqueda %> / landing | landing.com </title>
+        <% } else { %>
+            <title>Búsqueda / landing | landing.com </title>
+            <% } %>
+                <!-- Bootstrap Core CSS -->
+                <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+                <!-- MetisMenu CSS -->
+                <link href="../vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
+                <!-- DataTables CSS -->
+                <link href="../vendor/datatables-plugins/dataTables.bootstrap.css" rel="stylesheet">
+                <!-- DataTables Responsive CSS -->
+                <link href="../vendor/datatables-responsive/dataTables.responsive.css" rel="stylesheet">
+                <!-- Material CSS -->
+                <link href="../dist/css/mdb.min.css" rel="stylesheet">
+                <!-- Custom CSS -->
+                <link href="../dist/css/sb-admin-2.css" rel="stylesheet">
+                <!-- Custom Fonts -->
+                <link href="../vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+                <link href="https://fonts.googleapis.com/css?family=Titillium+Web:400,700italic,600italic,400italic,300italic,200italic,900,700,600,300,200"
+                    rel="stylesheet" type="text/css">
+                <!-- Font Awesome -->
+                <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+                <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+                <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+                <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+      <![endif]-->
+                <!-- Google Tag Manager -->
+                <script>(function (w, d, s, l, i) {
+                        w[l] = w[l] || []; w[l].push({
+                            'gtm.start':
+                                new Date().getTime(), event: 'gtm.js'
+                        }); var f = d.getElementsByTagName(s)[0],
+                            j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                                'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+                    })(window, document, 'script', 'dataLayer', 'GTM-xxxxx');
+                </script>
+                <!-- End Google Tag Manager -->
+
+</head>
+
+<body class="fixed-sn black-skin">
+    <header>
+        <% include ../partials/navbar %>
+    </header>
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="content-banner banner970x90">
+
+        </div>
+    </div>
+    <main>
+        <div id="wrapper">
+            <div id="page-wrapper" class="container-fluid">
+                <!-- /.row -->
+                <div class="row">
+                    <div class="col-lg-8 col-md-12 col-sm-12 col-12">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h1 class="page-header">
+                                    <i class="fa fa-file-text title-fa" aria-hidden="true"></i> Resultados de tu búsqueda</h1>
+                            </div>
+                            <!-- /.panel-heading -->
+                            <div class="panel-body">
+                                <div class="container-table">
+                                    <!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
+                                    <div>
+                                        <!--RESULTADO 1-->
+                                        <% if(matchesPersonas){ %>
+                                            <% for(var i=0; i<matchesPersonas.length; i++){ %>
+                                                <% %>
+                                                    <div class="perfil-persona clearfix col-sm-12">
+                                                        <div class="pull-left content-img-persona">
+                                                            <img style="max-width:90px;max-height:90px" src="/logos/dummypersona.jpg">
+                                                        </div>
+                                                        <div class="pull-left content-data-persona">
+                                                            <h3>
+                                                                <a href="/persona/<%=matchesPersonas[i].nombre%>-t<%=matchesPersonas[i].webID%>">
+                                                                    <%=matchesPersonas[i].nombre%>
+                                                                </a>
+                                                            </h3>
+                                                            <p>
+                                                                <strong>Cargo:</strong>
+                                                                <%=matchesPersonas[i].cargo%>
+                                                            </p>
+                                                            <p>
+                                                                <strong>Empresa:</strong>
+                                                                <%=matchesPersonas[i].datosEmpresa.nombreEmpresa %>
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                    <% %>
+                                                        <% }%>
+                                                            <% }%>
+                                                                <!--RESULTADO 2-->
+                                                                <% for(var i=0; i<matches.length; i++) {%>
+                                                                    <div class="perfil-persona clearfix col-sm-12">
+                                                                        <div class="pull-left content-img-persona">
+                                                                            <% 
+                                       var existenciaImagen;
+                                       try{
+                                           fs.statSync('./public/logos/' + matches[i].datosEmpresa.nombreEmpresa +  " - Logo.jpg");
+                                           existenciaImagen = true;
+                                       }
+                                       
+                                       catch(err){
+                                           console.log("no existe imagen: ", matches[i].datosEmpresa.nombreEmpresa);
+                                           existenciaImagen = false;
+                                       } %>
+                                                                                <% if (existenciaImagen) { %>
+                                                                                    <img style="max-width:90px;max-height:90px;width:auto;height:auto;" src="logos/<%= matches[i].datosEmpresa.nombreEmpresa %> - logo.jpg">
+                                                                                    <% } else {%>
+                                                                                        <img style="max-width:90px;max-height:90px" src="/logos/dummyempresa.jpg">
+                                                                                        <% } %>
+                                                                        </div>
+                                                                        <div class="pull-left content-data-persona">
+                                                                            <h3>
+                                                                                <a href="/empresa/<%= matches[i].datosEmpresa.nombreEmpresa.trim().replace(/\s+|[,\/]/g, '-') %>-t<%= matches[i].datosEmpresa.webID %>">
+                                                                                    <%= matches[i].datosEmpresa.nombreEmpresa %>
+                                                                                </a>
+                                                                            </h3>
+                                                                            <% if (matches[i].datosEmpresa.rubroEmpresa != undefined){ %>
+                                                                                <p>
+                                                                                    <strong>Rubro: </strong>
+                                                                                    <%= matches[i].datosEmpresa.rubroEmpresa %>
+                                                                                </p>
+                                                                                <% } %>
+                                                                                    <% if (matches[i].data != undefined && matches[i].data["persona fisica"] != undefined && matches[i].data["persona fisica"]["nombre"] != undefined && matches[i].data["persona fisica"]["cargo"] != undefined){ %>
+                                                                                        <p>
+                                                                                            <strong>
+                                                                                                <%= matches[i].data["persona fisica"]["cargo"] %>: </strong>
+                                                                                            <%= matches[i].data["persona fisica"]["nombre"] %>
+                                                                                        </p>
+                                                                                        <% } %>
+                                                                                            <% if ((matches[i].data != undefined) && (matches[i].data["persona juridica"] != undefined) && (matches[i].data["persona juridica"]["Dirección"] != undefined)){ %>
+                                                                                                <p>
+                                                                                                    <strong>
+                                                                                                        <strong>
+                                                                                                            <i class="fa fa-envelope"></i>
+                                                                                                        </strong>
+                                                                                                    </strong>
+                                                                                                    <%= matches[i].data["persona juridica"]["Dirección"] %>
+                                                                                                </p>
+                                                                                                <%}%>
+                                                                        </div>
+                                                                    </div>
+                                                                    <% } %>
+                                                                        <!--FIN RESULTADO-->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="colum-nota" class="col-lg-4 col-md-12 col-sm-12 col-12">
+                        <!--CONTENEDOR DEL BANNER-->
+                        <div class="content-banner banner300x250">
+
+                        </div>
+                    </div>
+                    <div class="mod-it-cxense col-lg-8 col-md-12 col-sm-12 col-12">
+                        <div class="cxense-decoration">
+                            <h2 class="title-mod-cxense-it"> Noticias de tu interes</h2>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </main>
+    <!-- /#wrapper -->
+    <footer class="clearfix site-footer">
+        <div class="a-divider-inner"></div>
+        <div class="logos-quien text-center">
+            <img src="../dist/img/landing.svg" width="160" height="60">
+            <img src="../dist/img/landing.svg" width="160" height="60">
+            <img src="../dist/img/landing.svg" width="130" height="60">
+        </div>
+        <div class="col-lg-12 text-center legales">
+            Todos los datos están actualizados al 01/01/2018. La información puede haber sido modifica en el transcurso de la ultima
+            actualización a la fecha. Lamentamos cualquier inconveniente.
+        </div>
+    </footer>
+    <% include ../partials/commonscript %>
+        <!-- Page-Level Demo Scripts - Tables - Use for reference -->
+        <script>
+            $(document).ready(function () {
+                $('#dataTables-example').DataTable({
+                    responsive: true
+                });
+            });
+        </script>
+</body>
+
+</html>

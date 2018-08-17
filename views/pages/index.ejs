@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+
+
+
+<html lang="en">
+<% include ../partials/head %>
+  <style type="text/css">
+    html,
+    body,
+    header,
+    .view {
+      height: 100%;
+    }
+
+    .jarallax {
+      min-height: auto;
+    }
+
+    footer {
+      position: relative;
+      z-index: 999999999;
+      overflow: hidden;
+      padding-top: 10px;
+    }
+
+    @media (max-width: 640px) {
+
+      html,
+      body,
+      header,
+      .view {
+        height: initial;
+      }
+      .view .mask {
+        position: static;
+      }
+    }
+  </style>
+
+  <body>
+
+    <body>
+      <!-- Main navigation -->
+
+      allowfullscreen></iframe>
+      <header>
+        <!--Navbar-->
+        <nav class="navbar navbar-default navbar-static-top fixed-top navbar-toggleable-md navbar-expand-lg scrolling-navbar double-nav"
+          role="navigation" style="margin-bottom: 0">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="/">
+              <img src="../dist/img/landing.svg" width="180px" height="30px" alt="landing">
+            </a>
+          </div>
+          <!-- /.navbar-header -->
+          <ul class="nav navbar-nav nav-flex-icons ml-auto">
+            <!-- Basic dropdown -->
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle waves-effect waves-light btn dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="true">
+                <i class="fa fa-user fa-fw"></i>
+                <i id="user-name"></i>
+              </a>
+              <ul class="dropdown-menu dropdown-menu-right dropdown-user" aria-labelledby="navbarDropdownMenuLink">
+                <li id="menu-login">
+                </li>
+              </ul>
+            </li>
+            <li class="dropdown" id="boton-ingresar">
+              <a type="button" class="btn dropdown-toggle" data-toggle="modal" data-target="#myModal" onclick="javascript:openPopUpProvider('facebook', false, '1', 'landing' );">
+                Ingresar
+              </a>
+            </li>
+            <!-- /.dropdown -->
+          </ul>
+        </nav>
+        <!-- Navbar -->
+        <!-- Full Page Intro -->
+        <div class="view jarallax" data-jarallax='{"speed": 0.2}' style="background-image: url('../dist/img/bg_intro.jpg'); background-repeat: no-repeat; background-size: cover; background-position: center center;">
+          <!-- Mask & flexbox options-->
+          <div class="mask rgba-white-light d-flex justify-content-center align-items-center">
+            <!-- Content -->
+            <div class="container">
+              <!--Grid row-->
+              <div class="content-buscador row">
+                <div class="header-buscador text-center">
+                  <div class="row">
+                    <div class="content-logo-quien wow fadeInUp">
+                      <h1 class="display-3 mb-0 pt-md-5 pt-5 white-text font-weight-bold wow fadeInDown animated" data-wow-delay="0.3s" style="visibility: visible; animation-name: fadeInDown; animation-delay: 0.3s;">
+                        <img class="lg-logo-quien" src="../dist/img/landing.svg" width="450px" height="160px" alt="Quién es Quién">
+                      </h1>
+                    </div>
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xl-12 wow fadeInUp" data-wow-delay="0.4s">
+                      <form action="/buscar" method="get" role="search">
+                        <div class="form-row">
+                          <div class="col-lg-11 col-md-11 col-sm-11 col-10 sinpadding">
+                            <input id="campoBusqueda" name="busqueda" type="text" class="form-control form-control-lg input-buscar" placeholder="Buscar...">
+                          </div>
+                          <div class="col-lg-1 col-md-1 col-sm-1 col-2 sinpadding">
+                            <button id="buscar" type="submit" class="btn btn-block btn-lg btn-primary btn-buscar">
+                              <i class="fa fa-search"></i>
+                            </button>
+                          </div>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="features-icons text-center">
+                <div class="row">
+                  <div class="col-lg-4 col-md-12 col-sm-12 col-12 wow fadeInUp">
+                    <div class="content-card">
+                      <i class="fa fa-industry"></i>
+                      <h5 class="font-weight-bold mt-3 white-text">landing</h5>
+                      <p class="white-text">landing
+                      </p>
+                      <a href="/buscar?publicacion=5aab0f6d8eaad2325c694494" class="btn btn-secondary btn-rounded btn-md waves-effect waves-light">
+                        <i class="fa fa-clone left"></i> ver +</a>
+                    </div>
+                  </div>
+                  <div class="col-lg-4 col-md-6 col-sm-6 col-6 wow fadeInUp">
+                    <div class="content-card">
+                      <i class="fa fa-group"></i>
+                      <h5 class="font-weight-bold mt-3 white-text">Direc-CIO</h5>
+                      <p class="white-text">landing
+                      </p>
+                      <a href="/buscar?publicacion=5aab0f6d8eaad2325c694494" class="btn btn-secondary btn-rounded btn-md waves-effect waves-light">
+                        <i class="fa fa-clone left"></i> ver +</a>
+                    </div>
+                  </div>
+                  <div class="col-lg-4 col-md-6 col-sm-6 col-6 wow fadeInUp">
+                    <div class="content-card">
+                      <i class="fa fa-group"></i>
+                      <h5 class="font-weight-bold mt-3 white-text">landing</h5>
+                      <p class="white-text">landing
+                      </p>
+                      <a href="/buscar?publicacion=5a9701d18eaad2325cda3787" class="btn btn-secondary btn-rounded btn-md waves-effect waves-light">
+                        <i class="fa fa-clone left"></i> ver +</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!--Grid row-->
+            </div>
+            <!-- Content -->
+          </div>
+          <!-- Mask & flexbox options-->
+        </div>
+        <!-- Full Page Intro -->
+      </header>
+      <!-- Main navigation -->
+      <!--Main Layout-->
+      <main>
+        <footer class="clearfix site-footer">
+          <div class="a-divider-inner"></div>
+          <div class="logos-quien text-center">
+            <img src="../dist/img/landing.svg" width="160" height="60">
+            <img src="../dist/img/landing.svg" width="160" height="60">
+            <img src="../dist/img/landing.svg" width="130" height="60">
+          </div>
+          <div class="col-lg-12 text-center legales">
+            Todos los datos están actualizados al 01/01/2018. La información puede haber sido modifica en el transcurso de la ultima
+            actualización a la fecha. Lamentamos cualquier inconveniente.
+          </div>
+        </footer>
+      </main>
+      <!--Main Layout-->
+
+
+      <div class="hiddendiv common"></div>
+    </body>
+    <% include ../partials/commonscript %>
+  </body>
+
+</html>
